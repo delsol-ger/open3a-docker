@@ -7,7 +7,6 @@ WORKDIR /tmp/open3aunzip/
 RUN unzip open3A-3.7.zip \
 	&& rm open3A-3.7.zip
 
-
 FROM php:7.2-apache
 # get those source files from first container
 COPY --from=0 /tmp/open3aunzip/ /var/www/html/
