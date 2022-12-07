@@ -10,7 +10,7 @@ This is the free version of open3a, there are some paid versions and plugins too
 
 example RUN command
 
-docker run -d -p 8080:80 -v open3asystem:/var/www/html/system -v open3aspecifics:/var/www/html/specifics --name open3a3.4 open3a3.4
+docker run -d -p 8080:80 -v open3asystem:/var/www/html/system -v open3aspecifics:/var/www/html/specifics --name open3a3.7 open3a3.7
 
 After this you can setup your database-settings on the web-ui.
 
