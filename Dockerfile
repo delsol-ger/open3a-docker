@@ -7,7 +7,7 @@ WORKDIR /tmp/open3aunzip/
 RUN unzip open3A-3.9.zip \
 	&& rm open3A-3.9.zip
 
-FROM php:7.2-apache
+FROM php:7.4-apache
 # get those source files from first container
 COPY --from=0 /tmp/open3aunzip/ /var/www/html/
 COPY docker-php-entrypoint /usr/local/bin/
