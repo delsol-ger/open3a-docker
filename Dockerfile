@@ -2,10 +2,10 @@
 FROM ubuntu
 RUN mkdir -p /tmp/open3aunzip/
 RUN apt-get update && apt-get install unzip
-COPY open3A-3.9.zip /tmp/open3aunzip/
+COPY open3A-4.1.zip /tmp/open3aunzip/
 WORKDIR /tmp/open3aunzip/
-RUN unzip open3A-3.9.zip \
-	&& rm open3A-3.9.zip
+RUN unzip open3A-4.1.zip \
+	&& rm open3A-4.1.zip
 
 FROM php:7.4-apache
 # get those source files from first container
