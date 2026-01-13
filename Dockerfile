@@ -16,5 +16,4 @@ RUN mv /var/www/html/system/ /var/www/html/systemdefault/
 # enable the mysqli extension 
 RUN sed -i -e 's|;extension=mysqli|extension=mysqli|g' /usr/local/etc/php/php.ini-development \
 	&& docker-php-ext-install mysqli \
-	&& mkdir /var/www/html/system \
 	&& chmod +x /usr/local/bin/docker-php-entrypoint
