@@ -8,8 +8,30 @@ fi
 
 # look for system / session folder, create for new installation
 if [ ! -d "/var/www/html/system/session/" ]; then
-	mkdir /var/www/html/system/session/
-	cp -r /var/www/html/systemdefault/* /var/www/html/system/
+	mkdir -p /var/www/html/system/session/
+	# Installation.pfdb.php is always mounted, so copy everything except DBData to preserve it
+	# Copy all directories/files except DBData
+	for item in /var/www/html/systemdefault/*; do
+		basename_item=$(basename "$item")
+		if [ "$basename_item" != "DBData" ]; then
+			cp -r "$item" /var/www/html/system/
+		fi
+	done
+	# Ensure DBData directory structure exists
+	mkdir -p /var/www/html/system/DBData/
+	# If Installation.pfdb.php is empty, copy it from source (new installation)
+	if [ ! -s "/var/www/html/system/DBData/Installation.pfdb.php" ] && [ -f "/var/www/html/systemdefault/DBData/Installation.pfdb.php" ]; then
+		cp /var/www/html/systemdefault/DBData/Installation.pfdb.php /var/www/html/system/DBData/Installation.pfdb.php
+	fi
+	# Copy other files from DBData if any (excluding Installation.pfdb.php)
+	if [ -d "/var/www/html/systemdefault/DBData" ]; then
+		for item in /var/www/html/systemdefault/DBData/*; do
+			basename_item=$(basename "$item")
+			if [ "$basename_item" != "Installation.pfdb.php" ] && [ -e "$item" ]; then
+				cp -r "$item" /var/www/html/system/DBData/ 2>/dev/null || true
+			fi
+		done
+	fi
 fi
 
 chown www-data:www-data /var/www/html/system/session/
