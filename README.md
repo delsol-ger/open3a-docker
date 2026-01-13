@@ -14,7 +14,7 @@ to mount into your container
 
 example RUN command
 
-docker run -d -p 8080:80 -v /mnt/user/open3a/open3asystem/DBData/Installation.pfdb.php:/var/www/html/system/DBData/Installation.pfdb.php -v /mnt/user/open3a/open3aspecifics:/var/www/html/specifics --name open3a delsolger/open3a
+docker run -d -p 8080:80 -v /mnt/user/open3a/open3asystem/DBData/Installation.pfdb.php:/var/www/html/system/DBData/Installation.pfdb.php -v /mnt/user/open3a/open3aspecifics:/var/www/html/specifics -v /mnt/user/open3a/open3abackup:/var/www/html/system/Backup --name open3a delsolger/open3a
 
 After this you can setup your database-settings on the web-ui.
 
