@@ -1,5 +1,5 @@
 # open3a-docker
-This is a docker image of the free open3a accounting software.
+This is an inofficial docker image of the free open3a accounting software.
 It's based on the 7.2-apache image and needs an external database like mysql for the setup.
 
 This is the free version of open3a, there are some paid versions and plugins too, so please support the developers if you like the software.
@@ -18,3 +18,5 @@ docker run -d -p 8080:80 -v /mnt/user/open3a/open3asystem/DBData/Installation.pf
 
 After this you can setup your database-settings on the web-ui.
 
+Troubleshooting:
+If you are getting Database-Errors of missing columns after a version update, make sure to only mount the Installation.pfdb.php file, not the full system folder like in previous versions.
