@@ -2,12 +2,12 @@
 FROM ubuntu
 RUN mkdir -p /tmp/open3aunzip/
 RUN apt-get update && apt-get install unzip
-COPY open3A-4.3.zip /tmp/open3aunzip/
+COPY open3A-4.4.zip /tmp/open3aunzip/
 WORKDIR /tmp/open3aunzip/
-RUN unzip open3A-4.3.zip \
-	&& rm open3A-4.3.zip
+RUN unzip open3A-4.4.zip \
+	&& rm open3A-4.4.zip
 
-FROM php:7.4-apache
+FROM php:8.4-apache
 # get those source files from first container
 COPY --from=0 /tmp/open3aunzip/ /var/www/html/
 COPY docker-php-entrypoint /usr/local/bin/
