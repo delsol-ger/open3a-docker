@@ -1,0 +1,11 @@
+services:
+  open3a:
+    build:
+      context: .
+    volumes:
+      - ./conf/Installation.pfdb.php:/var/www/html/system/DBData/Installation.pfdb.php
+      - ./data/specifics:/var/www/html/specifics
+      - ./data/backup:/var/www/html/system/Backup
+    ports:
+      - "8080:80"
+
